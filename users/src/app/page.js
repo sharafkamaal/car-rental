@@ -1,4 +1,47 @@
 import Image from "next/image";
+import { useState } from "react";
+
+function LoginForm() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Replace with your authentication logic
+    console.log("Username:", username, "Password:", password);
+  };
+
+  return (
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col gap-4 p-6 border rounded shadow w-full max-w-sm bg-white"
+    >
+      <h2 className="text-lg font-bold mb-2">Login</h2>
+      <input
+        type="text"
+        placeholder="Username"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        className="border px-3 py-2 rounded"
+        required
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        className="border px-3 py-2 rounded"
+        required
+      />
+      <button
+        type="submit"
+        className="bg-blue-600 text-white rounded px-4 py-2 hover:bg-blue-700"
+      >
+        Login
+      </button>
+    </form>
+  );
+}
 
 export default function Home() {
   return (
@@ -50,6 +93,7 @@ export default function Home() {
             Read our docs
           </a>
         </div>
+        <LoginForm />
       </main>
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
         <a
